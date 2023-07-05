@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            const words = ["rock", "paper", "scissors"];
+            const randomIndex = Math.floor(Math.random() * words.length);
+
+            const word = words[randomIndex];
+            return word;
+        }
+
+        function letsPlay(playerSelection, computerSelection){
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerSelection.toLowerCase();
+
+            if (playerSelection === computerSelection){
+                return("Its a tie");
+            }
+            else if (playerSelection === "rock" && computerSelection === "scissors")
+            {
+                return("Player");
+            }
+            else if (playerSelection === "paper" && computerSelection === "rock")
+            {
+                return("Player");
+            }
+            else if (playerSelection === "scissors" && computerSelection === "paper")
+            {
+                return("Player");
+            }
+            else if (computerSelection === "rock" && playerSelection === "scissors")
+            {
+                return("Computer");
+            }
+            else if (computerSelection === "paper" && playerSelection === "rock")
+            {
+                return("Computer");
+            }
+            else if (computerSelection === "scissors" && playerSelection === "paper")
+            {
+                return("Computer");
+            }
+            else {
+                return "invalid"
+            }
+        }
+        
+
+        function game(){
+            let player = [];
+            let comp = [];
+
+            for (let i = 0; i < 5; i+=1){
+                const playerSelection = prompt("choice: ");
+                const computerSelection = getComputerChoice();
+                let winner = letsPlay(playerSelection, computerSelection);
+
+                if (winner == "Player"){
+                    player.push(winner);
+                }else if (winner == "Computer"){
+                    comp.push(winner);
+                }
+            }
+            
+            let plays = player.length;
+            let comps = comp.length;
+
+            if (plays === comps){
+                console.log(`YOU TIED! with ${plays}`);
+            }
+            else if (plays > comps){
+                console.log(`HUMAN WINS! with ${plays}`);
+            }else {
+                console.log(`AI TAKEOVER with ${comps}`);
+            }
+        }
+        game();
+
+    </script>
+</body>
+</html>
